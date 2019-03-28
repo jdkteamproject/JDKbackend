@@ -6,4 +6,4 @@ install: true
 
 script:
   - mvn clean package
-  - mvn sonar:sonar -Dsonar.projectKey=jdkteamproject_JDKbackend -Dsonar.organization=jdkteamproject -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+  - mvn sonar:sonar -Dsonar.projectKey=jdkteamproject_JDKbackend -Dsonar.organization=jdkteamproject -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=a40de4d1bd4b5f5e42b9ca25bb933d1b75a1f177
