@@ -33,6 +33,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/magikarp/.m2/repository/org/springframework/spring-web/4.3.3.RELEASE/spring-web-4.3.3.RELEASE.jar" sourcepath="/home/magikarp/.m2/repository/org/springframework/spring-web/4.3.3.RELEASE/spring-web-4.3.3.RELEASE-sources.jar">
@@ -43,6 +45,10 @@
 			<attribute name="maven.artifactId" value="spring-web"/>
 			<attribute name="maven.version" value="4.3.3.RELEASE"/>
 			<attribute name="maven.scope" value="compile"/>
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
