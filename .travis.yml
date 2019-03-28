@@ -1,0 +1,9 @@
+language: java
+sudo: false
+install: true
+
+
+
+script:
+  - mvn clean package
+  - mvn sonar:sonar -Dsonar.projectKey=jdkteamproject_JDKbackend -Dsonar.organization=jdkteamproject -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN

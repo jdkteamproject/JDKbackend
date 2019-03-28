@@ -21,8 +21,7 @@ public class Driver {
 //		
 //		HibernateUtil.closeSessionFactory();
 		
-		handler.getAllAPIEvents();
-
+		handler.getAPIEvents(0, "New Orleans", "Sports");
 	}
 
 }

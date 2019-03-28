@@ -16,15 +16,15 @@
 		</property>
 		
 		<property name="hibernate.connection.url">
-			jdbc:oracle:thin:@cueinstance.ce4vt4pvrdbk.us-east-2.rds.amazonaws.com:1521:ORCL
+			jdbc:oracle:thin:@kbdatabase.cxkxikim5te1.us-east-2.rds.amazonaws.com:1521:ORCL
 		</property>
 		
 		<property name="hibernate.connection.username">
-			magikarpp
+			knbehounek
 		</property>
 		
 		<property name="hibernate.connection.password">
-			123456789
+			Pikachu1130!
 		</property>
 		
 		<property name="hibenrate.connection.pool_size">
