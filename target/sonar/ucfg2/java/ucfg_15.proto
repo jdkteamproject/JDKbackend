@@ -1,0 +1,23 @@
+
+:com.cue.handler.Handler#getUserById(I)Lcom/cue/beans/User;
+__unknown_file ("1*∆
+1N
+DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java	 (ù
+ö
+N
+DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java	 (
+%0com.cue.handler.UserDao"__id*#*!
+com.cue.handler.Handler"
+ud‚ﬂ
+N
+DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java	 (
+%1com.cue.beans.User":com.cue.handler.UserDao#getUserById(I)Lcom/cue/beans/User;*
+
+%0com.cue.handler.UserDao*
+""2getUserById(I)"l
+N
+DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java (
+
+%1com.cue.beans.User:
+""B
+com.cue.handler.Handler

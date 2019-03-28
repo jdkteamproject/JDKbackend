@@ -1,0 +1,7 @@
+organization=jdkteamproject
+projectKey=jdkteamproject_JDKbackend
+serverUrl=https://sonarcloud.io
+serverVersion=7.7.0.23020
+dashboardUrl=https://sonarcloud.io/dashboard?id=jdkteamproject_JDKbackend
+ceTaskId=AWnCBe1LEAx-M9AqMgxC
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWnCBe1LEAx-M9AqMgxC
