@@ -1,0 +1,15 @@
+package com.cue.handler;
+
+import java.util.List;
+
+import com.cue.beans.User;
+
+public interface UserDao {
+	
+	public List<User> getAllUsers();
+	public User getUserById(int id);
+	public boolean createUser(User user);
+	public boolean updateUser(User user);
+	public void deleteUserById(int id);
+
+}
