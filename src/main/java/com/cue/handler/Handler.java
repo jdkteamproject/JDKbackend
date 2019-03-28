@@ -3,15 +3,17 @@ package com.cue.handler;
 import java.util.List;
 
 import org.json.simple.JSONObject;
+import org.springframework.stereotype.Component;
 
 import com.cue.beans.User;
 
+@Component
 public class Handler {
 	
 	private UserDao ud = new UserDaoImpl();
 	private TicketMasterAPI tm = new TicketMasterAPI();
 	
-	public JSONObject getAPIEvents(int page, String city, String category) {
+	public JSONObject getAPIEvents(Integer page, String city, String category) {
 		return tm.getAPIEvents(page, city, category);
 	}
 

@@ -54,16 +54,18 @@ public class TicketMasterAPI {
 				
 				retrieved.remove("_links");
 				
-				JSONObject embedded = (JSONObject) retrieved.get("_embedded");
-				
-				JSONArray jarr = (JSONArray) embedded.get("events");
+				if(retrieved.get("_embedded") != null) {
+					JSONObject embedded = (JSONObject) retrieved.get("_embedded");
+					
+					if(embedded.get("events") != null) {
+						JSONArray jarr = (JSONArray) embedded.get("events");
 
-				for(int i=0; i<jarr.size(); i++) {
-					JSONObject loopObj = (JSONObject)jarr.get(i);
-					this.removeInfo(loopObj);
+						for(int i=0; i<jarr.size(); i++) {
+							JSONObject loopObj = (JSONObject)jarr.get(i);
+							this.removeInfo(loopObj);
+						}
+					}
 				}
-				
-				System.out.println(retrieved);
 				
 			}
 		} catch(Exception e) {
@@ -72,56 +74,11 @@ public class TicketMasterAPI {
 		
 		return retrieved;
 	}
-	
-	private JSONObject searchOne(String searchUrl) {
-		JSONObject retrieved = null;
-		String inline = "";
-		
-		try {
-			url = new URL(searchUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.connect();
-			int responsecode = conn.getResponseCode();
-			if(responsecode != 200) throw new RuntimeException("HttpResponseCode: " + responsecode);
-			else {
-				Scanner sc = new Scanner(url.openStream());
-				while(sc.hasNext()) {
-					inline+=sc.nextLine();
-				}
 
-				sc.close();
-				
-				JSONParser parser = new JSONParser();
-				
-				retrieved = (JSONObject) parser.parse(inline);
-				
-				retrieved.remove("_links");
-				retrieved.remove("page");
-				
-				JSONObject embedded = (JSONObject) retrieved.get("_embedded");
-				
-				JSONArray jarr = (JSONArray) embedded.get("events");
-
-				for(int i=0; i<jarr.size(); i++) {
-					JSONObject loopObj = (JSONObject)jarr.get(i);
-					this.removeInfo(loopObj);
-				}
-				
-				System.out.println(retrieved);
-				
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return retrieved;
-	}
-	
-	public JSONObject getAPIEvents(int page, String city, String category) {
+	public JSONObject getAPIEvents(Integer page, String city, String category) {
 		city = city.replace(" ", "%");
 		category = category.replace(" ", "%");
-		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=t63Al5tXuGHyxtiO6eDELpEGEnt45tg9&sort=date,desc&page=" + page + "&city=" + city + "&segmentName=" + category;
+		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=t63Al5tXuGHyxtiO6eDELpEGEnt45tg9&page=" + page + "&city=" + city + "&segmentName=" + category;
 		
 		return this.searchMore(url);
 	}
