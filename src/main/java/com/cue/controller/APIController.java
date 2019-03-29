@@ -2,19 +2,21 @@ package com.cue.controller;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cue.dao.Handler;
+import com.cue.dao.TicketMasterAPI;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class APIController {
 	
 	@Autowired
-	Handler handler;
+	TicketMasterAPI tmAPI;
 	
 	@GetMapping
     public JSONObject getAPI(@RequestParam(value="page", required=false) Integer page, @RequestParam(value="city", required=false) String city, @RequestParam(value="category", required=false) String category, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(value="id", required=false) String id){
@@ -35,7 +37,7 @@ public class APIController {
         	id = "";
         }
    
-        return handler.getAPIEvents(page, city, category, keyword, id);
+        return tmAPI.getAPIEvents(page, city, category, keyword, id);
     }
 	
 

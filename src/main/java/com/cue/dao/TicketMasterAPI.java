@@ -7,7 +7,9 @@ import java.util.Scanner;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TicketMasterAPI {
 	
 	private URL url = null;
