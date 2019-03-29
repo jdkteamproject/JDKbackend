@@ -1,4 +1,4 @@
-package com.cue.handler;
+package com.cue.dao;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -75,10 +75,12 @@ public class TicketMasterAPI {
 		return retrieved;
 	}
 
-	public JSONObject getAPIEvents(Integer page, String city, String category) {
-		city = city.replace(" ", "%");
-		category = category.replace(" ", "%");
-		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=t63Al5tXuGHyxtiO6eDELpEGEnt45tg9&page=" + page + "&city=" + city + "&segmentName=" + category;
+	public JSONObject getAPIEvents(Integer page, String city, String category, String keyword, String id) {
+		city = city.replace(" ", "%20");
+		category = category.replace(" ", "%20");
+		keyword = keyword.replace(" ", "%20");
+		id = id.replace(" ", "%20");
+		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=t63Al5tXuGHyxtiO6eDELpEGEnt45tg9&page=" + page + "&city=" + city + "&segmentName=" + category + "&keyword=" + keyword + "&id=" + id;
 		
 		return this.searchMore(url);
 	}

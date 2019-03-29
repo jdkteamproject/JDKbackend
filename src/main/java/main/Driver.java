@@ -1,7 +1,9 @@
 package main;
 
+import java.util.List;
+
 import com.cue.beans.User;
-import com.cue.handler.Handler;
+import com.cue.dao.Handler;
 import com.cue.util.HibernateUtil;
 
 public class Driver {
@@ -18,10 +20,17 @@ public class Driver {
 //		
 //		User user2 = new User("alfonzo@gmail.com", "alfonzo", "123");
 //		handler.createUser(user2);
-//		
-//		HibernateUtil.closeSessionFactory();
 		
-		handler.getAPIEvents(0, "New Orleans", "Sports");
+		System.out.println("Getting all users...");
+		List<User> users = handler.getAllUsers();
+		
+		for(User user: users) {
+			System.out.println(user);
+		}
+		
+		System.out.println("Got all users");
+		
+		HibernateUtil.closeSessionFactory();
 	}
 
 }

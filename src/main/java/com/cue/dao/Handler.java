@@ -1,4 +1,4 @@
-package com.cue.handler;
+package com.cue.dao;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public class Handler {
 	private UserDao ud = new UserDaoImpl();
 	private TicketMasterAPI tm = new TicketMasterAPI();
 	
-	public JSONObject getAPIEvents(Integer page, String city, String category) {
-		return tm.getAPIEvents(page, city, category);
+	public JSONObject getAPIEvents(Integer page, String city, String category, String keyword, String id) {
+		return tm.getAPIEvents(page, city, category, keyword, id);
 	}
 
 	public List<User> getAllUsers() {
