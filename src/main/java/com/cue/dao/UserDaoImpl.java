@@ -3,14 +3,18 @@ package com.cue.dao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.cue.beans.User;
 import com.cue.util.HibernateUtil;
 
+@Component
 public class UserDaoImpl implements UserDao {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAllUsers() {
 		Session s = HibernateUtil.getSession();
@@ -64,14 +68,60 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean updateUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateUser(User change) {
+		boolean changed = false;
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		User u = null;
+		
+		try {
+			tx = s.beginTransaction();
+			
+			u = (User) s.get(User.class, change.getId());
+			
+			if(change.getEmail() != null) {
+				u.setEmail(change.getEmail());
+			}
+			if(change.getPassword() != null) {
+				u.setPassword(change.getPassword());
+			}
+			if(change.getUsername() != null) {
+				u.setUsername(change.getUsername());
+			}
+			
+			s.save(u);
+			tx.commit();
+			changed = true;
+		}catch(HibernateException e){
+			e.printStackTrace();
+			tx.rollback();			
+		}finally {
+			s.close();
+		}
+		
+		return changed;
 	}
 
 	@Override
-	public void deleteUserById(int id) {
-		// TODO Auto-generated method stub
+	public boolean deleteUserById(int id) {
+		boolean deleted = false;
+		Session s = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = s.beginTransaction();
+			s.delete(s.get(User.class, id));
+			tx.commit();
+			
+			deleted = true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			s.close();
+		}
+		
+		return deleted;
 		
 	}
 
