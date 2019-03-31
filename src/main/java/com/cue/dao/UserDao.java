@@ -1,4 +1,4 @@
-package com.cue.handler;
+package com.cue.dao;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ public interface UserDao {
 	public User getUserById(int id);
 	public boolean createUser(User user);
 	public boolean updateUser(User user);
-	public void deleteUserById(int id);
+	public boolean deleteUserById(int id);
 
 }

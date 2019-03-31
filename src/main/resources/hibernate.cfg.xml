@@ -40,6 +40,8 @@
 		</property>
 		
 		<mapping class="com.cue.beans.User"/>
+		<mapping class="com.cue.beans.Event"/>
+		
 		
 	</session-factory>
 	

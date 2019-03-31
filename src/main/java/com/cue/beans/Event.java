@@ -1,15 +1,38 @@
 package com.cue.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="events")
 public class Event {
-	private String name;
-	private String id;
-	private String url;
-	private String dateTime;
-	private String classification;
-	private String info;
-	private String image;
-	private String city;
-	
+	@Id
+	@Column(name="e_id")
+	private int id;
+
+	public Event() {
+		super();
+	}
+
+	public Event(int id) {
+		super();
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Event [id=" + id + "]";
+	}
 	
 	
 }

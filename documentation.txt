@@ -1,0 +1,21 @@
+HTTP Request Urls:
+[URL = "http://18.223.119.112:8085"] / [context path = "cue"] / [endpoint] + [request params]
+
+1. API GET Requests:
+endpoint = "api" +
+parameters [order doesn't matter, can mix and match]) =
+	keyword
+	page #
+	city
+	category
+	id
+ex.
+http://18.223.119.112:8085/cue/api?keyword=basketball&category=sports
+http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_
+
+2. User GET Requests:
+end point = "user" +
+ - /all				(for all users)
+ - /{id}			(for single user)
+ - /friends/{id}	(for all friends of user with {id})
+ 
