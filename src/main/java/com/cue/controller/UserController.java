@@ -11,27 +11,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cue.beans.User;
-import com.cue.dao.UserDaoImpl;
+import com.cue.dao.Handler;
+import com.cue.models.User;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	
 	@Autowired
-	UserDaoImpl ud;
+	Handler handler;
 	
 	@GetMapping
     public List<User> getAllUsers(){
-		return ud.getAllUsers();
+		return handler.getAllUsers();
     }
 	
 	@GetMapping(value="/{id}")
 	public User getUserById(@PathVariable("id") Integer id) {
-		User user = ud.getUserById(id);
+		User user = handler.getUserById(id);
 		if(user == null) {
 			// Maybe add an Exception here if I want?
 		}
@@ -40,22 +41,22 @@ public class UserController {
 	
 	@PostMapping
 	public boolean createUser(@RequestBody User user){
-		List<User> users = ud.getAllUsers();
+		List<User> users = handler.getAllUsers();
 		for(User u : users) {
 			if(u.getId() == user.getId()) {
 				return false;
 			}
 		}
-		return ud.createUser(user);
+		return handler.createUser(user);
 	}
 	
 	@PutMapping("/{id}")
 	public boolean updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
-		List<User> users = ud.getAllUsers();
+		List<User> users = handler.getAllUsers();
 		for(User u : users) {
 			if(u.getId() == id) {
 				user.setId(id);
-				return ud.updateUser(user);
+				return handler.updateUser(user);
 			}
 		}
 		return false;
@@ -63,10 +64,10 @@ public class UserController {
 	
 	@DeleteMapping("/{id}")
 	public boolean deleteUser(@PathVariable("id") Integer id) {
-		List<User> users = ud.getAllUsers();
+		List<User> users = handler.getAllUsers();
 		for(User u : users) {
 			if(u.getId() == id) {
-				return ud.deleteUserById(id);
+				return handler.deleteUserById(id);
 			}
 		}
 		return false;

@@ -3,8 +3,7 @@ HTTP Request Urls:
 
 
 1. API GET Requests:
-endpoint = "/api" +
-parameters [order doesn't matter, can mix and match]) =
+endpoint = "/api" + parameters [order doesn't matter, can mix and match]) =
 	keyword
 	page #
 	city
@@ -16,12 +15,13 @@ http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_
 
 
 2. User Http Requests:
-endpoint = "/user"
+endpoint = "/users"
 
 GET Request:
 "/" =		all users
 "/{id} = 	single user with id
 
+For POST, PUT, and DELETE: returns true if successful, false if not.
 POST Request:
 "/" + RequestBody<User> = 	creates User
 
@@ -32,4 +32,4 @@ DELETE Request:
 "/{id}" =	deletes User with id
 
 ex.
-http://18.223.119.112:8085/cue/user/50
+GET user with id 50: http://18.223.119.112:8085/cue/users/50
