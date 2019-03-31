@@ -33,8 +33,6 @@ public class Driver {
 		user2.addFavEvent(event1);
 		
 		user2.addFriend(user1);
-//		user1.addFriend(user2);
-//		user3.addFriend(user1);
 		
 		handler.updateUser(user1);
 		handler.updateUser(user2);

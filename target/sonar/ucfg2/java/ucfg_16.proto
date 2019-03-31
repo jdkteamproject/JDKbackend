@@ -1,23 +1,0 @@
-
-9com.cue.handler.Handler#createUser(Lcom/cue/beans/User;)Z
-__unknown_file ("1*Î
-1N
-DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java	 (
-š
-N
-DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java	 (
-%0com.cue.handler.UserDao"__id*#*!
-com.cue.handler.Handler"
-udşû
-N
-DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java	 (
-%1boolean"9com.cue.handler.UserDao#createUser(Lcom/cue/beans/User;)Z*
-
-%0com.cue.handler.UserDao*
-
-usercom.cue.beans.User2 createUser(Lcom/cue/beans/User;)"X
-N
-DD:\JDKproject1\JDKbackend\src\main\java\com\cue\handler\Handler.java (
-"":
-usercom.cue.beans.UserB
-com.cue.handler.Handler
