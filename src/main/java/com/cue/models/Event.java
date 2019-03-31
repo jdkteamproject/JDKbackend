@@ -1,4 +1,4 @@
-package com.cue.beans;
+package com.cue.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,22 +10,22 @@ import javax.persistence.Table;
 public class Event {
 	@Id
 	@Column(name="e_id")
-	private int id;
+	private String id;
 
 	public Event() {
 		super();
 	}
 
-	public Event(int id) {
+	public Event(String id) {
 		super();
 		this.id = id;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
