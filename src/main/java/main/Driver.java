@@ -32,7 +32,7 @@ public class Driver {
 		user1.addFavEvent(event2);
 		user2.addFavEvent(event1);
 		
-		user2.addFriend(user1);
+//		user2.addFriend(user1);
 		
 		handler.updateUser(user1);
 		handler.updateUser(user2);

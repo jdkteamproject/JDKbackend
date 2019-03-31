@@ -43,9 +43,9 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_event_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="e_id"))
 	private Set<Event> favEvents;
-	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
-	@JoinTable(name="user_friend_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="f_id"))
-	private Set<User> friends;
+//	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
+//	@JoinTable(name="user_friend_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="f_id"))
+//	private Set<User> friends;
 	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_notification_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="n_id"))
 	private Set<Notification> notifications;
@@ -65,7 +65,7 @@ public class User {
 		this.reportedNum = 0;
 		this.region = region;
 		this.favEvents = new HashSet<Event>();
-		this.friends = new HashSet<User>();
+//		this.friends = new HashSet<User>();
 		this.notifications = new HashSet<Notification>();
 	}
 	
@@ -80,7 +80,7 @@ public class User {
 		this.reportedNum = reportedNum;
 		this.region = region;
 		this.favEvents = favEvents;
-		this.friends = friends;
+//		this.friends = friends;
 		this.notifications = notifications;
 	}
 
@@ -96,7 +96,7 @@ public class User {
 		this.reportedNum = reportedNum;
 		this.region = region;
 		this.favEvents = favEvents;
-		this.friends = friends;
+//		this.friends = friends;
 		this.notifications = notifications;
 	}
 
@@ -169,17 +169,17 @@ public class User {
 		this.favEvents.add(event);
 	}
 
-	public Set<User> getFriends() {
-		return friends;
-	}
-
-	public void setFriends(Set<User> friends) {
-		this.friends = friends;
-	}
-	
-	public void addFriend(User user) {
-		this.friends.add(user);
-	}
+//	public Set<User> getFriends() {
+//		return friends;
+//	}
+//
+//	public void setFriends(Set<User> friends) {
+//		this.friends = friends;
+//	}
+//	
+//	public void addFriend(User user) {
+//		this.friends.add(user);
+//	}
 
 	public Set<Notification> getNotifications() {
 		return notifications;
@@ -197,7 +197,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
 				+ ", isAdmin=" + isAdmin + ", isBanned=" + isBanned + ", reportedNum=" + reportedNum + ", region="
-				+ region + ", favEvents=" + favEvents + ", friends=" + friends + ", notifications=" + notifications
+				+ region + ", favEvents=" + favEvents + ", friends=" + "friends" + ", notifications=" + notifications
 				+ "]";
 	}
 	
