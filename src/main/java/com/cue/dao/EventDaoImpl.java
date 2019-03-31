@@ -3,40 +3,41 @@ package com.cue.dao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
-import com.cue.models.User;
+import com.cue.models.Event;
 import com.cue.util.HibernateUtil;
 
 @Component
-public class UserDaoImpl implements UserDao {
+public class EventDaoImpl implements EventDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getAllUsers() {
+	public List<Event> getAllEvents() {
 		Session s = HibernateUtil.getSession();
-		List<User> users = null;
+		List<Event> events = null;
 		
 		try {
-			users = s.createQuery("From User").list();
+			events = s.createCriteria(Event.class).list();
 		} catch(HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			s.close();
 		}
 		
-		return users;
+		return events;
 	}
 
 	@Override
-	public User getUserById(Integer id) {
+	public Event getEventById(String id) {
 		Session s = HibernateUtil.getSession();
-		User u = null;
+		Event u = null;
 		
 		try{
-			u = (User) s.get(User.class, id);
+			u = (Event) s.get(Event.class, id);
 		} catch(HibernateException e) {
 			e.printStackTrace();
 		} finally {
@@ -47,13 +48,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean createUser(User user) {
+	public boolean createEvent(Event event) {
 		boolean created = false;
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 		
 		try {
-			s.save(user);
+			s.save(event);
 			tx.commit();
 			created = true;
 		} catch(HibernateException e) {
@@ -67,29 +68,17 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean updateUser(User change) {
+	public boolean updateEvent(Event change) {
 		boolean changed = false;
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
-		User u = null;
+		Event u = null;
 		
 		try {
-			u = (User) s.get(User.class, change.getId());
+			u = (Event) s.get(Event.class, change.getId());
 			
-			if(change.getEmail() != null) {
-				u.setEmail(change.getEmail());
-			}
-			if(change.getPassword() != null) {
-				u.setPassword(change.getPassword());
-			}
-			if(change.getUsername() != null) {
-				u.setUsername(change.getUsername());
-			}
-			if(change.getFavEvents() != null) {
-				u.setFavEvents(change.getFavEvents());
-			}
-			if(change.getFriends() != null) {
-				u.setFriends(change.getFriends());
+			if(change.getId() != null) {
+				u.setId(change.getId());
 			}
 			
 			s.save(u);
@@ -106,13 +95,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean deleteUserById(Integer id) {
+	public boolean deleteEventById(String id) {
 		boolean deleted = false;
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();;
 		
 		try {
-			s.delete(s.get(User.class, id));
+			s.delete(s.get(Event.class, id));
 			tx.commit();
 			
 			deleted = true;

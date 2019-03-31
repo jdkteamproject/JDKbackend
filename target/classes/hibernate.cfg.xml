@@ -39,8 +39,9 @@
 			create
 		</property>
 		
-		<mapping class="com.cue.beans.User"/>
-		<mapping class="com.cue.beans.Event"/>
+		<mapping class="com.cue.models.User"/>
+		<mapping class="com.cue.models.Event"/>
+		<mapping class="com.cue.models.Notification"/>
 		
 		
 	</session-factory>

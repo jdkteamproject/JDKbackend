@@ -1,8 +1,9 @@
-package com.cue.beans;
+package com.cue.models;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,18 +13,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Users")
+
 public class User {
 	
 	@Id
 	@Column(name="u_id")
 	@SequenceGenerator(sequenceName="user_seq", name="u_seq")
 	@GeneratedValue(generator="u_seq", strategy=GenerationType.SEQUENCE)
-	private int id;
+	private Integer id;
 	@Column(name="u_email")
 	private String email;
 	@Column(name="u_username")
@@ -35,15 +38,19 @@ public class User {
 	@Column(name="u_isBanned")
 	private boolean isBanned;
 	@Column(name="u_reportedNum")
-	private int reportedNum;
+	private Integer reportedNum;
 	@Column(name="u_region")
 	private String region;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_event_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="e_id"))
 	private Set<Event> favEvents;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_friend_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="f_id"))
 	private Set<User> friends;
+	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
+	@JoinTable(name="user_notification_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="n_id"))
+	private Set<Notification> notifications;
+	
 	
 	public User() {
 		super();
@@ -60,10 +67,11 @@ public class User {
 		this.region = region;
 		this.favEvents = new HashSet<Event>();
 		this.friends = new HashSet<User>();
+		this.notifications = new HashSet<Notification>();
 	}
 	
 	public User(String email, String username, String password, boolean isAdmin, boolean isBanned,
-			int reportedNum, String region, Set<Event> favEvents, Set<User> friends) {
+			Integer reportedNum, String region, Set<Event> favEvents, Set<User> friends, Set<Notification> notifications) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -74,10 +82,11 @@ public class User {
 		this.region = region;
 		this.favEvents = favEvents;
 		this.friends = friends;
+		this.notifications = notifications;
 	}
 
-	public User(int id, String email, String username, String password, boolean isAdmin, boolean isBanned,
-			int reportedNum, String region, Set<Event> favEvents, Set<User> friends) {
+	public User(Integer id, String email, String username, String password, boolean isAdmin, boolean isBanned,
+			Integer reportedNum, String region, Set<Event> favEvents, Set<User> friends, Set<Notification> notifications) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -89,12 +98,13 @@ public class User {
 		this.region = region;
 		this.favEvents = favEvents;
 		this.friends = friends;
+		this.notifications = notifications;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getEmail() {
@@ -132,11 +142,11 @@ public class User {
 		this.isBanned = isBanned;
 	}
 
-	public int getReportedNum() {
+	public Integer getReportedNum() {
 		return reportedNum;
 	}
 
-	public void setReportedNum(int reportedNum) {
+	public void setReportedNum(Integer reportedNum) {
 		this.reportedNum = reportedNum;
 	}
 
@@ -155,6 +165,10 @@ public class User {
 	public void setFavEvents(Set<Event> favEvents) {
 		this.favEvents = favEvents;
 	}
+	
+	public void addFavEvent(Event event) {
+		this.favEvents.add(event);
+	}
 
 	public Set<User> getFriends() {
 		return friends;
@@ -168,11 +182,24 @@ public class User {
 		this.friends.add(user);
 	}
 
+	public Set<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(Set<Notification> notifications) {
+		this.notifications = notifications;
+	}
+	
+	public void addNotification(Notification notification) {
+		this.notifications.add(notification);
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
 				+ ", isAdmin=" + isAdmin + ", isBanned=" + isBanned + ", reportedNum=" + reportedNum + ", region="
-				+ region + ", favEvents=" + favEvents + ", friends=" + friends + "]";
+				+ region + ", favEvents=" + favEvents + ", friends=" + friends + ", notifications=" + notifications
+				+ "]";
 	}
 	
 
