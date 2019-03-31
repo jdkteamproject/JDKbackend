@@ -75,8 +75,6 @@ public class UserDaoImpl implements UserDao {
 		User u = null;
 		
 		try {
-			tx = s.beginTransaction();
-			
 			u = (User) s.get(User.class, change.getId());
 			
 			if(change.getEmail() != null) {
@@ -106,10 +104,9 @@ public class UserDaoImpl implements UserDao {
 	public boolean deleteUserById(int id) {
 		boolean deleted = false;
 		Session s = HibernateUtil.getSession();
-		Transaction tx = null;
+		Transaction tx = s.beginTransaction();;
 		
 		try {
-			tx = s.beginTransaction();
 			s.delete(s.get(User.class, id));
 			tx.commit();
 			

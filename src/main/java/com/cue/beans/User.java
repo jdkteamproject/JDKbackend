@@ -3,6 +3,7 @@ package com.cue.beans;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,10 +39,10 @@ public class User {
 	private int reportedNum;
 	@Column(name="u_region")
 	private String region;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_event_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="e_id"))
 	private Set<Event> favEvents;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_friend_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="f_id"))
 	private Set<User> friends;
 	
@@ -154,6 +155,10 @@ public class User {
 
 	public void setFavEvents(Set<Event> favEvents) {
 		this.favEvents = favEvents;
+	}
+	
+	public void addFavEvent(Event event) {
+		this.favEvents.add(event);
 	}
 
 	public Set<User> getFriends() {

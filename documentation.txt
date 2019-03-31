@@ -1,8 +1,9 @@
 HTTP Request Urls:
 [URL = "http://18.223.119.112:8085"] / [context path = "cue"] / [endpoint] + [request params]
 
+
 1. API GET Requests:
-endpoint = "api" +
+endpoint = "/api" +
 parameters [order doesn't matter, can mix and match]) =
 	keyword
 	page #
@@ -13,9 +14,22 @@ ex.
 http://18.223.119.112:8085/cue/api?keyword=basketball&category=sports
 http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_
 
-2. User GET Requests:
-end point = "user" +
- - /all				(for all users)
- - /{id}			(for single user)
- - /friends/{id}	(for all friends of user with {id})
- 
+
+2. User Http Requests:
+endpoint = "/user"
+
+GET Request:
+"/" =		all users
+"/{id} = 	single user with id
+
+POST Request:
+"/" + RequestBody<User> = 	creates User
+
+PUT Request:
+"/{id}" + RequestBody<User> =	updates user with id with info of User
+
+DELETE Request:
+"/{id}" =	deletes User with id
+
+ex.
+http://18.223.119.112:8085/cue/user/50
