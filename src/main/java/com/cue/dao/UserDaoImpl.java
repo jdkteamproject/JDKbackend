@@ -88,9 +88,9 @@ public class UserDaoImpl implements UserDao {
 			if(change.getFavEvents() != null) {
 				u.setFavEvents(change.getFavEvents());
 			}
-			if(change.getFriends() != null) {
-				u.setFriends(change.getFriends());
-			}
+//			if(change.getFriends() != null) {
+//				u.setFriends(change.getFriends());
+//			}
 			
 			s.save(u);
 			tx.commit();
