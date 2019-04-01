@@ -19,12 +19,21 @@ public class UserDaoImpl implements UserDao {
 		User u = null;
 		
 		try{
-			u = (User) s.get(User.class, email);
+			List<User> users = this.getAllUsers();
+			for(User user : users) {
+				if(user.getEmail().equals(email)) {
+					u = user;
+				}
+			}
 		} catch(HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			s.close();
 		}
+		
+		System.out.println();
+		System.out.println("UserDaoImpl: getUserByEmail user is:");
+		System.out.println(u);
 		
 		return u;
 	}
