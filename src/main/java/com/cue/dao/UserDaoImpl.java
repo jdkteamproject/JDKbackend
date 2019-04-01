@@ -12,7 +12,23 @@ import com.cue.util.HibernateUtil;
 
 @Component
 public class UserDaoImpl implements UserDao {
-
+	
+	@Override
+	public User getUserByEmail(String email) {
+		Session s = HibernateUtil.getSession();
+		User u = null;
+		
+		try{
+			u = (User) s.get(User.class, email);
+		} catch(HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		
+		return u;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAllUsers() {

@@ -11,5 +11,6 @@ public interface UserDao {
 	public boolean createUser(User user);
 	public boolean updateUser(User user);
 	public boolean deleteUserById(Integer id);
+	public User getUserByEmail(String email);
 
 }
