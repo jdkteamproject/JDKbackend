@@ -13,6 +13,18 @@ public class Handler implements UserDao, EventDao{
 	UserDao ud = new UserDaoImpl();
 	EventDao ed = new EventDaoImpl();
 	
+	public Integer validateLogin(String email, String password) {
+		Integer status = -1;
+		
+		User u = ud.getUserByEmail(email);
+		
+		if(u.getPassword().equals(password)) {
+			status = u.getId();
+		}
+		
+		return status;
+	}
+	
 	@Override
 	public List<Event> getAllEvents() {
 		return ed.getAllEvents();
@@ -61,6 +73,11 @@ public class Handler implements UserDao, EventDao{
 	@Override
 	public boolean deleteUserById(Integer id) {
 		return ud.deleteUserById(id);
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		return ud.getUserByEmail(email);
 	}
 
 }
