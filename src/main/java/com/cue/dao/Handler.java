@@ -18,8 +18,10 @@ public class Handler implements UserDao, EventDao{
 		
 		User u = ud.getUserByEmail(email);
 		
-		if(u.getPassword().equals(password)) {
-			status = u.getId();
+		if(u != null) {
+			if(u.getPassword().equals(password)) {
+				status = u.getId();
+			}
 		}
 		
 		return status;
