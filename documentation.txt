@@ -1,9 +1,7 @@
-HTTP Request Urls:
-[URL = "http://18.223.119.112:8085"] / [context path = "cue"] / [endpoint] + [request params]
-
-ALL SPACEBARS MUST BE REPLACED WITH %20
+ALL SPACEBARS IN A URL MUST BE REPLACED WITH %20
 
 //////////////////////////////////////////////////////////////////////////////
+
 1. API GET Requests:
 endpoint = "/api" + parameters [order doesn't matter, can mix and match]) =
 	keyword
@@ -15,17 +13,19 @@ ex.
 http://18.223.119.112:8085/cue/api?keyword=basketball&category=sports
 http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_
 
+//////////////////////////////////////////////////////////////////////////////
 
 2. User Http Requests:
 endpoint = "/users"
 
 GET Request:
-"/" =		all users
-"/{id} = 	single user with id
+"/" =			all users
+"/{id} = 		single user with id
+"/{id}/events =	returns all user's saved events
 
-For POST, PUT, and DELETE: returns true if successful, false if not.
 POST Request:
-"/" + RequestBody<User> = 	creates User
+"/" + RequestBody<User> = 				creates User
+"/{id}/events" + RequestBody<Event> =	adds event to user saved
 
 PUT Request:
 "/{id}" + RequestBody<User> =	updates user with id with info of User
@@ -38,14 +38,12 @@ GET user with id 50: http://18.223.119.112:8085/cue/users/50
 
 //////////////////////////////////////////////////////////////////////////////
 
-Login Logic:
-ex. http://localhost:8080/cue/login?email=shimjay1@gmail.com&password=1234
+3. Login Http Request:
+endpoint = /login + [parameters]
 
-1. User inputs email and password at login page. Validation for email being an actual email is done here.
-2. Send a GET request to: 3.16.216.95:8085/cue/login?email=[inputEmail]&password=[inputPassword]
-3. In the backend, information is checked.
+Send a GET request to: 3.16.216.95:8085/cue/login?email=[inputEmail]&password=[inputPassword]
+
 - If email does not exist or email/password does not match: server responds with the Integer, -1
 - If email and password match: server responds with the Integer [user's id] of [inputEmail]
 
-
-//
+ex. http://localhost:8080/cue/login?email=shimjay1@gmail.com&password=1234

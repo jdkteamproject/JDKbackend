@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cue.dao.Handler;
+import com.cue.models.Event;
 import com.cue.models.User;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -51,6 +52,18 @@ public class UserController {
 			}
 		}
 		return handler.createUser(user);
+	}
+	
+	@PostMapping(value="/{id}/events")
+	public boolean addEventToUser(@PathVariable("id") Integer id, @RequestBody Event event){
+		User user = handler.getUserById(id);
+		if(user == null) {
+			return false;
+		}
+		handler.createEvent(event);
+		user.addFavEvent(event);
+		
+		return handler.updateUser(user);
 	}
 	
 	@PutMapping("/{id}")

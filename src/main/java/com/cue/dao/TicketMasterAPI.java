@@ -18,6 +18,7 @@ public class TicketMasterAPI {
 		object.remove("type");
 		object.remove("test");
 		object.remove("sales");
+		object.remove("accessibility");
 		object.remove("promoter");
 		object.remove("promoters");
 		object.remove("pleaseNote");
