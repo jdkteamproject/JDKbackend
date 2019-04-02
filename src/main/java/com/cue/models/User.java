@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Users")
-
 public class User {
 	
 	@Id
@@ -33,19 +32,20 @@ public class User {
 	@Column(name="u_password")
 	private String password;
 	@Column(name="u_isAdmin")
-	private boolean isAdmin;
+	private Boolean isAdmin;
 	@Column(name="u_isBanned")
-	private boolean isBanned;
+	private Boolean isBanned;
 	@Column(name="u_reportedNum")
 	private Integer reportedNum;
 	@Column(name="u_region")
 	private String region;
+	@Column(name="u_category")
+	private String category;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_event_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="e_id"))
 	private Set<Event> favEvents;
-//	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
-//	@JoinTable(name="user_friend_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="f_id"))
-//	private Set<User> friends;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.PERSIST)
 	@JoinTable(name="user_notification_jt", joinColumns=@JoinColumn(name="u_id"), inverseJoinColumns=@JoinColumn(name="n_id"))
 	private Set<Notification> notifications;
@@ -64,13 +64,14 @@ public class User {
 		this.isBanned = false;
 		this.reportedNum = 0;
 		this.region = region;
+		this.category = " ";
 		this.favEvents = new HashSet<Event>();
-//		this.friends = new HashSet<User>();
 		this.notifications = new HashSet<Notification>();
 	}
 	
-	public User(String email, String username, String password, boolean isAdmin, boolean isBanned,
-			Integer reportedNum, String region, Set<Event> favEvents, Set<User> friends, Set<Notification> notifications) {
+	public User(String email, String username, String password, Boolean isAdmin, Boolean isBanned,
+			Integer reportedNum, String region, String category, Set<Event> favEvents,
+			Set<Notification> notifications) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -79,13 +80,14 @@ public class User {
 		this.isBanned = isBanned;
 		this.reportedNum = reportedNum;
 		this.region = region;
+		this.category = category;
 		this.favEvents = favEvents;
-//		this.friends = friends;
 		this.notifications = notifications;
 	}
 
-	public User(Integer id, String email, String username, String password, boolean isAdmin, boolean isBanned,
-			Integer reportedNum, String region, Set<Event> favEvents, Set<User> friends, Set<Notification> notifications) {
+	public User(Integer id, String email, String username, String password, Boolean isAdmin, Boolean isBanned,
+			Integer reportedNum, String region, String category, Set<Event> favEvents,
+			Set<Notification> notifications) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -95,8 +97,8 @@ public class User {
 		this.isBanned = isBanned;
 		this.reportedNum = reportedNum;
 		this.region = region;
+		this.category = category;
 		this.favEvents = favEvents;
-//		this.friends = friends;
 		this.notifications = notifications;
 	}
 
@@ -125,19 +127,19 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isAdmin() {
+	public Boolean isAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 
-	public boolean isBanned() {
+	public Boolean isBanned() {
 		return isBanned;
 	}
 
-	public void setBanned(boolean isBanned) {
+	public void setBanned(Boolean isBanned) {
 		this.isBanned = isBanned;
 	}
 
@@ -169,18 +171,6 @@ public class User {
 		this.favEvents.add(event);
 	}
 
-//	public Set<User> getFriends() {
-//		return friends;
-//	}
-//
-//	public void setFriends(Set<User> friends) {
-//		this.friends = friends;
-//	}
-//	
-//	public void addFriend(User user) {
-//		this.friends.add(user);
-//	}
-
 	public Set<Notification> getNotifications() {
 		return notifications;
 	}
@@ -193,11 +183,19 @@ public class User {
 		this.notifications.add(notification);
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
 				+ ", isAdmin=" + isAdmin + ", isBanned=" + isBanned + ", reportedNum=" + reportedNum + ", region="
-				+ region + ", favEvents=" + favEvents + ", friends=" + "friends" + ", notifications=" + notifications
+				+ region + ", category=" + category + ", favEvents=" + favEvents + ", notifications=" + notifications
 				+ "]";
 	}
 	

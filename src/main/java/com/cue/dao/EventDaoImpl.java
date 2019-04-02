@@ -75,10 +75,10 @@ public class EventDaoImpl implements EventDao {
 		Event u = null;
 		
 		try {
-			u = (Event) s.get(Event.class, change.getId());
+			u = (Event) s.get(Event.class, change.getE_id());
 			
-			if(change.getId() != null) {
-				u.setId(change.getId());
+			if(change.getE_sid() != null) {
+				u.setE_sid(change.getE_sid());
 			}
 			
 			s.save(u);

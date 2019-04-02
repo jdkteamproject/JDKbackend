@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.cue.models.User;
@@ -30,10 +31,6 @@ public class UserDaoImpl implements UserDao {
 		} finally {
 			s.close();
 		}
-		
-		System.out.println();
-		System.out.println("UserDaoImpl: getUserByEmail user is:");
-		System.out.println(u);
 		
 		return u;
 	}
@@ -110,12 +107,27 @@ public class UserDaoImpl implements UserDao {
 			if(change.getUsername() != null) {
 				u.setUsername(change.getUsername());
 			}
+			if(change.isAdmin() != null) {
+				u.setAdmin(change.isAdmin());
+			}
+			if(change.isBanned() != null) {
+				u.setBanned(change.isBanned());
+			}
+			if(change.getReportedNum() != null) {
+				u.setReportedNum(change.getReportedNum());
+			}
+			if(change.getRegion() != null) {
+				u.setRegion(change.getRegion());
+			}
+			if(change.getCategory() != null) {
+				u.setCategory(change.getCategory());
+			}
 			if(change.getFavEvents() != null) {
 				u.setFavEvents(change.getFavEvents());
 			}
-//			if(change.getFriends() != null) {
-//				u.setFriends(change.getFriends());
-//			}
+			if(change.getNotifications() != null) {
+				u.setNotifications(change.getNotifications());
+			}
 			
 			s.save(u);
 			tx.commit();
@@ -150,6 +162,12 @@ public class UserDaoImpl implements UserDao {
 		
 		return deleted;
 		
+	}
+
+	@Override
+	public List<JSONObject> getUserEvents(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

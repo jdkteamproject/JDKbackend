@@ -2,6 +2,8 @@ package com.cue.dao;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import com.cue.models.User;
 
 public interface UserDao {
@@ -12,5 +14,6 @@ public interface UserDao {
 	public boolean updateUser(User user);
 	public boolean deleteUserById(Integer id);
 	public User getUserByEmail(String email);
+	public List<JSONObject> getUserEvents(Integer id);
 
 }
