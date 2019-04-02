@@ -19,13 +19,15 @@ http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_
 endpoint = "/users"
 
 GET Request:
-"/" =			all users
-"/{id} = 		single user with id
-"/{id}/events =	returns all user's saved events
+"/" =					all users
+"/{id} = 				single user with id
+"/{id}/events =			returns all user's saved events
+"/{id}/notifications =	returns all user's notifications
 
 POST Request:
-"/" + RequestBody<User> = 				creates User
-"/{id}/events" + RequestBody<Event> =	adds event to user saved
+"/" + RequestBody<User> = 							creates User
+"/{id}/events" + RequestBody<Event> =				adds event to user saved
+"/{id}/notifications" + RequestBody<Notification> =	adds event to user saved
 
 PUT Request:
 "/{id}" + RequestBody<User> =	updates user with id with info of User
@@ -33,8 +35,10 @@ PUT Request:
 DELETE Request:
 "/{id}" =	deletes User with id
 
+**To remove an event or notification in a user, send a PUT request to "/{id}" with the specific event/notification removed from its property.
+
 ex.
-GET user with id 50: http://18.223.119.112:8085/cue/users/50
+GET user with id 50: 	http://18.223.119.112:8085/cue/users/50
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -1,6 +1,7 @@
 package com.cue.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cue.dao.Handler;
 import com.cue.models.Event;
+import com.cue.models.Notification;
 import com.cue.models.User;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -43,6 +45,12 @@ public class UserController {
 		return events;
 	}
 	
+	@GetMapping(value="/{id}/notifications")
+	public Set<Notification> getUserNotifications(@PathVariable("id") Integer id) {
+		Set<Notification> notifications = handler.getUserNotifications(id);
+		return notifications;
+	}
+	
 	@PostMapping
 	public boolean createUser(@RequestBody User user){
 		List<User> users = handler.getAllUsers();
@@ -60,8 +68,42 @@ public class UserController {
 		if(user == null) {
 			return false;
 		}
-		handler.createEvent(event);
+		boolean exists = false;
+		List<Event> allEvents = handler.getAllEvents();
+		for(Event e : allEvents) {
+			if(e.getE_sid().equals(event.getE_sid())) {
+				exists = true;
+				event = e;
+			}
+		}
+		if(!exists) {
+			handler.createEvent(event);
+		}
+		
 		user.addFavEvent(event);
+		
+		return handler.updateUser(user);
+	}
+	
+	@PostMapping(value="/{id}/notifications")
+	public boolean addNotificationToUser(@PathVariable("id") Integer id, @RequestBody Notification notification){
+		User user = handler.getUserById(id);
+		if(user == null) {
+			return false;
+		}
+		boolean exists = false;
+		List<Notification> allNotifications = handler.getAllNotifications();
+		for(Notification n : allNotifications) {
+			if(n.getMessage().equals(notification.getMessage())) {
+				exists = true;
+				notification = n;
+			}
+		}
+		if(!exists) {
+			handler.createNotification(notification);
+		}
+		
+		user.addNotification(notification);
 		
 		return handler.updateUser(user);
 	}
