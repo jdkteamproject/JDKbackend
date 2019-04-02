@@ -1,7 +1,6 @@
 package com.cue.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,7 @@ public class LoginController {
 	@Autowired
 	Handler handler;
 	
-	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping
     public Integer loginValidate(@RequestParam(value="email") String email, @RequestParam(value="password") String password){
 		return handler.validateLogin(email, password);
     }
