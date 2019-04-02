@@ -20,6 +20,17 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 	TicketMasterAPI tm = new TicketMasterAPI();
 	NotificationDao nd = new NotificationDaoImpl();
 	
+	public Set<Notification> getUserNotifications(Integer id){
+		Set<Notification> total = null;
+		
+		User user = this.getUserById(id);
+		if(user != null) {
+			total = user.getNotifications();
+		}
+		
+		return total;
+	}
+	
 	public Integer validateLogin(String email, String password) {
 		Integer status = -1;
 		
@@ -44,7 +55,7 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 			for(Event event : userEvents) {
 				JSONObject boi = tm.getAPIEvents(0, "", "", "", event.getE_sid());
 				try {
-					TimeUnit.MILLISECONDS.sleep(350);
+					TimeUnit.MILLISECONDS.sleep(375); //Limited API calls per second
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
