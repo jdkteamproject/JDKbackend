@@ -2,6 +2,7 @@ package com.cue.controller;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cue.dao.Handler;
 import com.cue.models.User;
 
-@CrossOrigin(origins = "http://localhost:8085")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -36,9 +37,9 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/{id}/events")
-	public User getUsersavedEvents(@PathVariable("id") Integer id) {
-		User user = handler.getUserById(id);
-		return user;
+	public List<JSONObject> getUsersavedEvents(@PathVariable("id") Integer id) {
+		List<JSONObject> events = handler.getUserEvents(id);
+		return events;
 	}
 	
 	@PostMapping

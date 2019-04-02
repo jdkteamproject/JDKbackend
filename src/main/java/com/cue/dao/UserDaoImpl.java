@@ -164,10 +164,4 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
-	@Override
-	public List<JSONObject> getUserEvents(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

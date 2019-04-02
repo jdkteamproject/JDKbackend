@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cue.dao.Handler;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/login")
 public class LoginController {

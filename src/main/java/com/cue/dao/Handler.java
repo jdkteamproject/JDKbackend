@@ -1,6 +1,9 @@
 package com.cue.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
@@ -13,6 +16,7 @@ public class Handler implements UserDao, EventDao{
 	
 	UserDao ud = new UserDaoImpl();
 	EventDao ed = new EventDaoImpl();
+	TicketMasterAPI tm = new TicketMasterAPI();
 	
 	public Integer validateLogin(String email, String password) {
 		Integer status = -1;
@@ -26,6 +30,28 @@ public class Handler implements UserDao, EventDao{
 		}
 		
 		return status;
+	}
+	
+	@SuppressWarnings("null")
+	public List<JSONObject> getUserEvents(Integer id) {
+		List<JSONObject> total = new ArrayList<JSONObject>();
+		User user = this.getUserById(id);
+		
+		if(user.getFavEvents() != null) {
+			Set<Event> userEvents = user.getFavEvents();
+			for(Event event : userEvents) {
+				JSONObject boi = tm.getAPIEvents(0, "", "", "", event.getE_sid());
+				try {
+					TimeUnit.MILLISECONDS.sleep(250);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println(boi);
+				if(boi != null) total.add(boi);
+			}
+		}
+		
+		return total;
 	}
 	
 	@Override
@@ -81,12 +107,6 @@ public class Handler implements UserDao, EventDao{
 	@Override
 	public User getUserByEmail(String email) {
 		return ud.getUserByEmail(email);
-	}
-
-	@Override
-	public List<JSONObject> getUserEvents(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

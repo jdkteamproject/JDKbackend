@@ -14,6 +14,5 @@ public interface UserDao {
 	public boolean updateUser(User user);
 	public boolean deleteUserById(Integer id);
 	public User getUserByEmail(String email);
-	public List<JSONObject> getUserEvents(Integer id);
 
 }
