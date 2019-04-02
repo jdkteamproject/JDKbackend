@@ -19,10 +19,6 @@ public class LoginController {
 	
 	@GetMapping
     public Integer loginValidate(@RequestParam(value="email") String email, @RequestParam(value="password") String password){
-		System.out.println();
-		System.out.println("Request Param email: " + email);
-		System.out.println("Request Param password: " + password);
-		
 		return handler.validateLogin(email, password);
     }
 

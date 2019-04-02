@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cue.dao.Handler;
 import com.cue.models.User;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8085")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -32,9 +32,12 @@ public class UserController {
 	@GetMapping(value="/{id}")
 	public User getUserById(@PathVariable("id") Integer id) {
 		User user = handler.getUserById(id);
-		if(user == null) {
-			// Maybe add an Exception here if I want?
-		}
+		return user;
+	}
+	
+	@GetMapping(value="/{id}/events")
+	public User getUsersavedEvents(@PathVariable("id") Integer id) {
+		User user = handler.getUserById(id);
 		return user;
 	}
 	

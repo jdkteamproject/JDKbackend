@@ -2,6 +2,7 @@ package com.cue.dao;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.cue.models.Event;
@@ -80,6 +81,12 @@ public class Handler implements UserDao, EventDao{
 	@Override
 	public User getUserByEmail(String email) {
 		return ud.getUserByEmail(email);
+	}
+
+	@Override
+	public List<JSONObject> getUserEvents(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

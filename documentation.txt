@@ -1,7 +1,9 @@
 HTTP Request Urls:
 [URL = "http://18.223.119.112:8085"] / [context path = "cue"] / [endpoint] + [request params]
 
+ALL SPACEBARS MUST BE REPLACED WITH %20
 
+//////////////////////////////////////////////////////////////////////////////
 1. API GET Requests:
 endpoint = "/api" + parameters [order doesn't matter, can mix and match]) =
 	keyword
@@ -33,3 +35,17 @@ DELETE Request:
 
 ex.
 GET user with id 50: http://18.223.119.112:8085/cue/users/50
+
+//////////////////////////////////////////////////////////////////////////////
+
+Login Logic:
+ex. http://localhost:8080/cue/login?email=shimjay1@gmail.com&password=1234
+
+1. User inputs email and password at login page. Validation for email being an actual email is done here.
+2. Send a GET request to: 3.16.216.95:8085/cue/login?email=[inputEmail]&password=[inputPassword]
+3. In the backend, information is checked.
+- If email does not exist or email/password does not match: server responds with the Integer, -1
+- If email and password match: server responds with the Integer [user's id] of [inputEmail]
+
+
+//
