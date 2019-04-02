@@ -20,7 +20,7 @@ import com.cue.models.Event;
 import com.cue.models.Notification;
 import com.cue.models.User;
 
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -130,5 +130,17 @@ public class UserController {
 		}
 		return false;
 	}
+	
+	@DeleteMapping("/notification/{id}")
+	public boolean Test(@PathVariable("id") Integer id) {
+		List<Notification> notifications = handler.getAllNotifications();
+		for(Notification n : notifications) {
+			if(n.getId() == id) {
+				return handler.deleteNotificationById(id);
+			}
+		}
+		return false;
+	}
+
 
 }

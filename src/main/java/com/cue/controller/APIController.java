@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cue.dao.TicketMasterAPI;
 
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class APIController {

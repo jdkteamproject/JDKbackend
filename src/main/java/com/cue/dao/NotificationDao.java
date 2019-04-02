@@ -7,9 +7,9 @@ import com.cue.models.Notification;
 public interface NotificationDao {
 	
 	public List<Notification> getAllNotifications();
-	public Notification getNotificationById(String id);
+	public Notification getNotificationById(Integer id);
 	public boolean createNotification(Notification notification);
 	public boolean updateNotification(Notification notification);
-	public boolean deleteNotificationById(String id);
+	public boolean deleteNotificationById(Integer id);
 
 }

@@ -73,7 +73,7 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 	}
 
 	@Override
-	public Event getEventById(String id) {
+	public Event getEventById(Integer id) {
 		return ed.getEventById(id);
 	}
 
@@ -88,7 +88,7 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 	}
 
 	@Override
-	public boolean deleteEventById(String id) {
+	public boolean deleteEventById(Integer id) {
 		return ed.deleteEventById(id);
 	}
 
@@ -128,7 +128,7 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 	}
 
 	@Override
-	public Notification getNotificationById(String id) {
+	public Notification getNotificationById(Integer id) {
 		return nd.getNotificationById(id);
 	}
 
@@ -143,7 +143,7 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 	}
 
 	@Override
-	public boolean deleteNotificationById(String id) {
+	public boolean deleteNotificationById(Integer id) {
 		return nd.deleteNotificationById(id);
 	}
 
