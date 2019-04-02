@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,30 +28,30 @@ public class UserController {
 	@Autowired
 	Handler handler;
 	
-	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping
     public List<User> getAllUsers(){
 		return handler.getAllUsers();
     }
 	
-	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}")
 	public User getUserById(@PathVariable("id") Integer id) {
 		User user = handler.getUserById(id);
 		return user;
 	}
 	
-	@GetMapping(value="/{id}/events", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}/events")
 	public List<JSONObject> getUsersavedEvents(@PathVariable("id") Integer id) {
 		List<JSONObject> events = handler.getUserEvents(id);
 		return events;
 	}
 	
-	@GetMapping(value="/{id}/notifications", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}/notifications")
 	public Set<Notification> getUserNotifications(@PathVariable("id") Integer id) {
 		Set<Notification> notifications = handler.getUserNotifications(id);
 		return notifications;
 	}
 	
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping
 	public boolean createUser(@RequestBody User user){
 		List<User> users = handler.getAllUsers();
 		for(User u : users) {
@@ -63,7 +62,7 @@ public class UserController {
 		return handler.createUser(user);
 	}
 	
-	@PostMapping(value="/{id}/events", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="/{id}/events")
 	public boolean addEventToUser(@PathVariable("id") Integer id, @RequestBody Event event){
 		User user = handler.getUserById(id);
 		if(user == null) {
@@ -86,7 +85,7 @@ public class UserController {
 		return handler.updateUser(user);
 	}
 	
-	@PostMapping(value="/{id}/notifications", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="/{id}/notifications")
 	public boolean addNotificationToUser(@PathVariable("id") Integer id, @RequestBody Notification notification){
 		User user = handler.getUserById(id);
 		if(user == null) {
