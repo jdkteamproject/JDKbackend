@@ -64,7 +64,7 @@ public class User {
 		this.isBanned = false;
 		this.reportedNum = 0;
 		this.region = region;
-		this.category = " ";
+		this.category = "";
 		this.favEvents = new HashSet<Event>();
 		this.notifications = new HashSet<Notification>();
 	}

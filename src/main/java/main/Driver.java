@@ -17,6 +17,7 @@ public class Driver {
 		User user1 = new User("shimjay1@gmail.com", "magikarp", "123", "New York");
 		User user2 = new User("alfonzo@gmail.com", "alfonzo", "123", "Reston");
 		User user3 = new User("newPerson@gmail.com", "NewGuy", "password1", "Seattle");
+		user3.setCategory("Sports");
 		
 		Event event1 = new Event("G5diZ4oLvGfYG");
 		Event event2 = new Event("vv1A7ZAf4Gkdb0k-J");
