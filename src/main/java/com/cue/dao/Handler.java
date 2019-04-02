@@ -9,14 +9,16 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.cue.models.Event;
+import com.cue.models.Notification;
 import com.cue.models.User;
 
 @Component
-public class Handler implements UserDao, EventDao{
+public class Handler implements UserDao, EventDao, NotificationDao {
 	
 	UserDao ud = new UserDaoImpl();
 	EventDao ed = new EventDaoImpl();
 	TicketMasterAPI tm = new TicketMasterAPI();
+	NotificationDao nd = new NotificationDaoImpl();
 	
 	public Integer validateLogin(String email, String password) {
 		Integer status = -1;
@@ -42,7 +44,7 @@ public class Handler implements UserDao, EventDao{
 			for(Event event : userEvents) {
 				JSONObject boi = tm.getAPIEvents(0, "", "", "", event.getE_sid());
 				try {
-					TimeUnit.MILLISECONDS.sleep(250);
+					TimeUnit.MILLISECONDS.sleep(350);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -107,6 +109,31 @@ public class Handler implements UserDao, EventDao{
 	@Override
 	public User getUserByEmail(String email) {
 		return ud.getUserByEmail(email);
+	}
+
+	@Override
+	public List<Notification> getAllNotifications() {
+		return nd.getAllNotifications();
+	}
+
+	@Override
+	public Notification getNotificationById(String id) {
+		return nd.getNotificationById(id);
+	}
+
+	@Override
+	public boolean createNotification(Notification notification) {
+		return nd.createNotification(notification);
+	}
+
+	@Override
+	public boolean updateNotification(Notification notification) {
+		return nd.updateNotification(notification);
+	}
+
+	@Override
+	public boolean deleteNotificationById(String id) {
+		return nd.deleteNotificationById(id);
 	}
 
 }
