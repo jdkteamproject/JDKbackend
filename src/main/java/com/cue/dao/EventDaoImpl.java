@@ -32,7 +32,7 @@ public class EventDaoImpl implements EventDao {
 	}
 
 	@Override
-	public Event getEventById(String id) {
+	public Event getEventById(Integer id) {
 		Session s = HibernateUtil.getSession();
 		Event u = null;
 		
@@ -95,7 +95,7 @@ public class EventDaoImpl implements EventDao {
 	}
 
 	@Override
-	public boolean deleteEventById(String id) {
+	public boolean deleteEventById(Integer id) {
 		boolean deleted = false;
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();;

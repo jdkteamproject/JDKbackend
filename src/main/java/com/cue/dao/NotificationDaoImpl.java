@@ -32,7 +32,7 @@ public class NotificationDaoImpl implements NotificationDao {
 	}
 
 	@Override
-	public Notification getNotificationById(String id) {
+	public Notification getNotificationById(Integer id) {
 		Session s = HibernateUtil.getSession();
 		Notification u = null;
 		
@@ -95,7 +95,7 @@ public class NotificationDaoImpl implements NotificationDao {
 	}
 
 	@Override
-	public boolean deleteNotificationById(String id) {
+	public boolean deleteNotificationById(Integer id) {
 		boolean deleted = false;
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();;
