@@ -36,7 +36,7 @@
 		</property>
 		
 		<property name="hibernate.hbm2ddl.auto">
-			update
+			validate
 		</property>
 		
 		<mapping class="com.cue.models.User"/>

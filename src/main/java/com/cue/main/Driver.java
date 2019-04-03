@@ -14,14 +14,12 @@ public class Driver {
 		
 		Handler handler = new Handler();
 		
-		User user1 = new User("shimjay1@gmail.com", "magikarp", "123", "Sports", "New York");
-		User user2 = new User("alfonzo@gmail.com", "alfonzo", "123", "Arts", "New Orleans");
-		User user3 = new User("newPerson@gmail.com", "NewGuy", "password1", "Music", "Seattle");
-		User user4 = new User("person4@gmail.com", "4th Person", "!!!", "Arts", "Miami");
-		User user5 = new User("leopold@gmail.com", "poolean", "ah?ha!", "Sports", "Portland");
-		user3.setCategory("Sports");
-		user2.setCategory("Music");
-		user4.setCategory("Arts");
+		User user1 = new User("tester1@gmail.com", "tester1", "123", "Sports", "New York");
+		User user2 = new User("tester2@gmail.com", "tester2", "123", "Arts", "New Orleans");
+		User user3 = new User("tester3@gmail.com", "tester3", "password1", "Music", "Seattle");
+		User user4 = new User("tester4@gmail.com", "tester4", "!!!", "Arts", "Miami");
+		User user5 = new User("admin1@gmail.com", "admin", "admin", "Sports", "Portland");
+		user5.setAdmin(true);
 		
 		Event event1 = new Event("G5diZ4oLvGfYG");
 		Event event2 = new Event("vv1A7ZAf4Gkdb0k-J");
@@ -41,6 +39,7 @@ public class Driver {
 		
 		user1.addNotification(n1);
 		user3.addNotification(n1);
+		user3.setBanned(true);
 		user3.addNotification(n2);
 		
 		user1.addFavEvent(event1);
