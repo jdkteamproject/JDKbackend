@@ -81,7 +81,6 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 		return status;
 	}
 	
-	@SuppressWarnings("null")
 	public List<JSONObject> getUserEvents(Integer id) {
 		List<JSONObject> total = new ArrayList<JSONObject>();
 		User user = this.getUserById(id);

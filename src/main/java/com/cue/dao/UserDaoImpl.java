@@ -117,7 +117,6 @@ public class UserDaoImpl implements UserDao {
 		User u = null;
 		
 		try {
-			System.out.println(change.getUsername() + " is being updated");
 			u = (User) s.get(User.class, change.getId());
 			
 			if(change.getEmail() != null) {
