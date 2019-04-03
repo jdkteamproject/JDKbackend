@@ -108,10 +108,7 @@ public class UserController {
 	public boolean updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
 		List<User> users = handler.getAllUsers();
 		for(User u : users) {
-			System.out.println("Looking for user with id: " + id + ". Current id: " + u.getId() + ". Current user: " + u.getEmail());
 			if(u.getId().equals(id)) {
-				System.out.println("Found user with id: " + id);
-				System.out.println("User is: " + u);
 				user.setId(id);
 				return handler.updateUser(user);
 			}
