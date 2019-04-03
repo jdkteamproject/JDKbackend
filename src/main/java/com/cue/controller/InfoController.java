@@ -22,5 +22,10 @@ public class InfoController {
     public List<String> listOfCities(){
 		return handler.getAllCities();
     }
+	
+	@GetMapping(path="/categories")
+    public List<String> listOfCategories(){
+		return handler.getAllCategories();
+    }
 
 }

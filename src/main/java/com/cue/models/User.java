@@ -55,7 +55,7 @@ public class User {
 		super();
 	}
 	
-	public User(String email, String username, String password, String region) {
+	public User(String email, String username, String password, String category, String region) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -64,7 +64,7 @@ public class User {
 		this.isBanned = false;
 		this.reportedNum = 0;
 		this.region = region;
-		this.category = "";
+		this.category = category;
 		this.favEvents = new HashSet<Event>();
 		this.notifications = new HashSet<Notification>();
 	}

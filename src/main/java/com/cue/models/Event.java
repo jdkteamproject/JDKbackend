@@ -17,7 +17,7 @@ public class Event {
 	@GeneratedValue(generator="e_seq", strategy=GenerationType.SEQUENCE)
 	private Integer e_id;
 	
-	@Column(name="e_sid")
+	@Column(name="e_sid", nullable=false)
 	private String e_sid;
 
 	public Event() {

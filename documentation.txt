@@ -22,7 +22,7 @@ endpoint = "/api" + parameters [order doesn't matter, can mix and match] =
 	id
 ex.
 http://18.223.119.112:8085/cue/api?keyword=basketball&category=sports
-http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_
+http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_.
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -36,7 +36,7 @@ GET Request:
 "/{id}/notifications =	returns all user's notifications
 
 POST Request:
-"/" + RequestBody<User> = 							creates User
+"/" + RequestBody<User> = 							creates User [Requestbody of user only needs to have the fields: email, password, username, category, and region]
 "/{id}/events" + RequestBody<Event> =				adds event to user saved
 "/{id}/notifications" + RequestBody<Notification> =	adds event to user saved
 

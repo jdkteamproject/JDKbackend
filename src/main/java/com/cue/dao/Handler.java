@@ -42,6 +42,15 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 		return temp;
 	}
 	
+	public List<String> getAllCategories(){
+		List<String> temp = new ArrayList<String>();
+		temp.add("Arts");
+		temp.add("Music");
+		temp.add("Sports");
+		
+		return temp;
+	}
+	
 	UserDao ud = new UserDaoImpl();
 	EventDao ed = new EventDaoImpl();
 	TicketMasterAPI tm = new TicketMasterAPI();
@@ -82,7 +91,7 @@ public class Handler implements UserDao, EventDao, NotificationDao {
 			for(Event event : userEvents) {
 				JSONObject boi = tm.getAPIEvents(0, "", "", "", event.getE_sid());
 				try {
-					TimeUnit.MILLISECONDS.sleep(375); //Limited API calls per second
+					TimeUnit.MILLISECONDS.sleep(500); //Limited API calls per second
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

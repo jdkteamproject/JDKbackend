@@ -14,11 +14,11 @@ public class Driver {
 		
 		Handler handler = new Handler();
 		
-		User user1 = new User("shimjay1@gmail.com", "magikarp", "123", "New York");
-		User user2 = new User("alfonzo@gmail.com", "alfonzo", "123", "New Orleans");
-		User user3 = new User("newPerson@gmail.com", "NewGuy", "password1", "Seattle");
-		User user4 = new User("person4@gmail.com", "4th Person", "!!!", "Miami");
-		User user5 = new User("leopold@gmail.com", "poolean", "ah?ha!", "Portland");
+		User user1 = new User("shimjay1@gmail.com", "magikarp", "123", "Sports", "New York");
+		User user2 = new User("alfonzo@gmail.com", "alfonzo", "123", "Arts", "New Orleans");
+		User user3 = new User("newPerson@gmail.com", "NewGuy", "password1", "Music", "Seattle");
+		User user4 = new User("person4@gmail.com", "4th Person", "!!!", "Arts", "Miami");
+		User user5 = new User("leopold@gmail.com", "poolean", "ah?ha!", "Sports", "Portland");
 		user3.setCategory("Sports");
 		user2.setCategory("Music");
 		user4.setCategory("Arts");
