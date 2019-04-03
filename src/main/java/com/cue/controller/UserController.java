@@ -53,36 +53,32 @@ public class UserController {
 	
 	@PostMapping
 	public boolean createUser(@RequestBody User user){
-		List<User> users = handler.getAllUsers();
-		for(User u : users) {
-			if(u.getId() == user.getId()) {
-				return false;
-			}
-		}
 		return handler.createUser(user);
 	}
 	
 	@PostMapping(value="/{id}/events")
 	public boolean addEventToUser(@PathVariable("id") Integer id, @RequestBody Event event){
 		User user = handler.getUserById(id);
-		if(user == null) {
-			return false;
-		}
-		boolean exists = false;
-		List<Event> allEvents = handler.getAllEvents();
-		for(Event e : allEvents) {
-			if(e.getE_sid().equals(event.getE_sid())) {
-				exists = true;
-				event = e;
+		
+		if(user != null) {
+			boolean exists = false;
+			List<Event> allEvents = handler.getAllEvents();
+			if(event.getE_id() != null) {
+				for(Event e : allEvents) {
+					if(e.getE_sid().equals(event.getE_sid())) {
+						exists = true;
+						event = e;
+					}
+				}
+				if(!exists) {
+					handler.createEvent(event);
+				}
+				user.addFavEvent(event);
+				
+				return handler.updateUser(user);
 			}
 		}
-		if(!exists) {
-			handler.createEvent(event);
-		}
-		
-		user.addFavEvent(event);
-		
-		return handler.updateUser(user);
+		return false;
 	}
 	
 	@PostMapping(value="/{id}/notifications")

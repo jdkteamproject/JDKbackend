@@ -1,13 +1,15 @@
 package com.cue.dao;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 
+import com.cue.models.Event;
+import com.cue.models.Notification;
 import com.cue.models.User;
 import com.cue.util.HibernateUtil;
 
@@ -75,6 +77,25 @@ public class UserDaoImpl implements UserDao {
 		Transaction tx = s.beginTransaction();
 		
 		try {
+			
+			if(user.getId() == null) {
+				user.setId(0);
+			}
+			if(user.getFavEvents() == null) {
+				user.setFavEvents(new HashSet<Event>());
+			}
+			if(user.isAdmin() == null) {
+				user.setAdmin(false);
+			}
+			if(user.isBanned() == null) {
+				user.setBanned(false);
+			}
+			if(user.getReportedNum() == null) {
+				user.setReportedNum(0);
+			}
+			if(user.getNotifications() == null) {
+				user.setNotifications(new HashSet<Notification>());
+			}
 			s.save(user);
 			tx.commit();
 			created = true;
