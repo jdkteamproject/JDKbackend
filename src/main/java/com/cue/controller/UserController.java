@@ -120,7 +120,7 @@ public class UserController {
 	public boolean deleteUser(@PathVariable("id") Integer id) {
 		List<User> users = handler.getAllUsers();
 		for(User u : users) {
-			if(u.getId() == id) {
+			if(u.getId().equals(id)) {
 				return handler.deleteUserById(id);
 			}
 		}
