@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
 	
 	private static Logger log = Logger.getRootLogger();
-	// create advice to be injected in our application methods to handling the cross cutting concern of logging
+//	 create advice to be injected in our application methods to handling the cross cutting concern of logging
 	
 	@AfterReturning("within(com.cue.controller.*)")
 	public void logAfter(JoinPoint jp) {
