@@ -18,6 +18,7 @@ public class TicketMasterAPI {
 		object.remove("type");
 		object.remove("test");
 		object.remove("sales");
+		object.remove("accessibility");
 		object.remove("promoter");
 		object.remove("promoters");
 		object.remove("pleaseNote");
@@ -83,6 +84,7 @@ public class TicketMasterAPI {
 		keyword = keyword.replace(" ", "%20");
 		id = id.replace(" ", "%20");
 		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=t63Al5tXuGHyxtiO6eDELpEGEnt45tg9&page=" + page + "&city=" + city + "&segmentName=" + category + "&keyword=" + keyword + "&id=" + id;
+		System.out.println("URL is: " + url);
 		
 		return this.searchMore(url);
 	}

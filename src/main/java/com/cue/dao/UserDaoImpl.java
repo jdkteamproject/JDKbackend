@@ -1,5 +1,6 @@
 package com.cue.dao;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -7,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
+import com.cue.models.Event;
+import com.cue.models.Notification;
 import com.cue.models.User;
 import com.cue.util.HibernateUtil;
 
@@ -19,7 +22,12 @@ public class UserDaoImpl implements UserDao {
 		User u = null;
 		
 		try{
-			u = (User) s.get(User.class, email);
+			List<User> users = this.getAllUsers();
+			for(User user : users) {
+				if(user.getEmail().equals(email)) {
+					u = user;
+				}
+			}
 		} catch(HibernateException e) {
 			e.printStackTrace();
 		} finally {
@@ -69,6 +77,25 @@ public class UserDaoImpl implements UserDao {
 		Transaction tx = s.beginTransaction();
 		
 		try {
+			
+			if(user.getId() == null) {
+				user.setId(0);
+			}
+			if(user.getFavEvents() == null) {
+				user.setFavEvents(new HashSet<Event>());
+			}
+			if(user.isAdmin() == null) {
+				user.setAdmin(false);
+			}
+			if(user.isBanned() == null) {
+				user.setBanned(false);
+			}
+			if(user.getReportedNum() == null) {
+				user.setReportedNum(0);
+			}
+			if(user.getNotifications() == null) {
+				user.setNotifications(new HashSet<Notification>());
+			}
 			s.save(user);
 			tx.commit();
 			created = true;
@@ -101,12 +128,27 @@ public class UserDaoImpl implements UserDao {
 			if(change.getUsername() != null) {
 				u.setUsername(change.getUsername());
 			}
+			if(change.isAdmin() != null) {
+				u.setAdmin(change.isAdmin());
+			}
+			if(change.isBanned() != null) {
+				u.setBanned(change.isBanned());
+			}
+			if(change.getReportedNum() != null) {
+				u.setReportedNum(change.getReportedNum());
+			}
+			if(change.getRegion() != null) {
+				u.setRegion(change.getRegion());
+			}
+			if(change.getCategory() != null) {
+				u.setCategory(change.getCategory());
+			}
 			if(change.getFavEvents() != null) {
 				u.setFavEvents(change.getFavEvents());
 			}
-//			if(change.getFriends() != null) {
-//				u.setFriends(change.getFriends());
-//			}
+			if(change.getNotifications() != null) {
+				u.setNotifications(change.getNotifications());
+			}
 			
 			s.save(u);
 			tx.commit();

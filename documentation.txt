@@ -1,9 +1,20 @@
-HTTP Request Urls:
-[URL = "http://18.223.119.112:8085"] / [context path = "cue"] / [endpoint] + [request params]
+ALL WHITESPACE IN A URL MUST BE REPLACED WITH %20
 
+Base URL:
+[http://18.223.119.112:8085/cue] + [end points]
 
-1. API GET Requests:
-endpoint = "/api" + parameters [order doesn't matter, can mix and match]) =
+//////////////////////////////////////////////////////////////////////////////
+
+- INFO GET Requests:
+end point = "/info" + "/{info_name}"
+
+Info_name:
+"/cities" =		get all available cities
+
+//////////////////////////////////////////////////////////////////////////////
+
+- API GET Requests:
+endpoint = "/api" + parameters [order doesn't matter, can mix and match] =
 	keyword
 	page #
 	city
@@ -11,19 +22,23 @@ endpoint = "/api" + parameters [order doesn't matter, can mix and match]) =
 	id
 ex.
 http://18.223.119.112:8085/cue/api?keyword=basketball&category=sports
-http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_
+http://18.223.119.112:8085/cue/api?id=G5diZ4JLfOeQ_.
 
+//////////////////////////////////////////////////////////////////////////////
 
-2. User Http Requests:
+- User Http Requests:
 endpoint = "/users"
 
 GET Request:
-"/" =		all users
-"/{id} = 	single user with id
+"/" =					all users
+"/{id} = 				single user with id
+"/{id}/events =			returns all user's saved events
+"/{id}/notifications =	returns all user's notifications
 
-For POST, PUT, and DELETE: returns true if successful, false if not.
 POST Request:
-"/" + RequestBody<User> = 	creates User
+"/" + RequestBody<User> = 							creates User [Requestbody of user only needs to have the fields: email, password, username, category, and region]
+"/{id}/events" + RequestBody<Event> =				adds event to user saved
+"/{id}/notifications" + RequestBody<Notification> =	adds event to user saved
 
 PUT Request:
 "/{id}" + RequestBody<User> =	updates user with id with info of User
@@ -31,5 +46,19 @@ PUT Request:
 DELETE Request:
 "/{id}" =	deletes User with id
 
+**To remove an event or notification in a user, send a PUT request to "/{id}" with the specific event/notification removed from its property.
+
 ex.
-GET user with id 50: http://18.223.119.112:8085/cue/users/50
+GET user with id 50: 	http://18.223.119.112:8085/cue/users/50
+
+//////////////////////////////////////////////////////////////////////////////
+
+- Login Http Request:
+endpoint = /login + [parameters]
+
+Send a GET request to: 3.16.216.95:8085/cue/login?email=[inputEmail]&password=[inputPassword]
+
+- If email does not exist or email/password does not match: server responds with the Integer, -1
+- If email and password match: server responds with the Integer [user's id] of [inputEmail]
+
+ex. http://localhost:8080/cue/login?email=shimjay1@gmail.com&password=1234
