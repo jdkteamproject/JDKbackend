@@ -1,0 +1,21 @@
+
+@com.cue.controller.InfoController#listOfCities()Ljava/util/List;
+__unknown_file ("1*Ý
+1X
+ND:\JDKproject1\JDKbackend\src\main\java\com\cue\controller\InfoController.java	 (²
+¯
+X
+ND:\JDKproject1\JDKbackend\src\main\java\com\cue\controller\InfoController.java	 (
+%0com.cue.dao.Handler"__id*2*0#
+!com.cue.controller.InfoController"	
+handlerÔÑ
+X
+ND:\JDKproject1\JDKbackend\src\main\java\com\cue\controller\InfoController.java	 (
+%1java.util.List"2com.cue.dao.Handler#getAllCities()Ljava/util/List;*
+
+%0com.cue.dao.Handler2getAllCities()"r
+X
+ND:\JDKproject1\JDKbackend\src\main\java\com\cue\controller\InfoController.java ( 
+
+%1java.util.ListB%#
+!com.cue.controller.InfoController

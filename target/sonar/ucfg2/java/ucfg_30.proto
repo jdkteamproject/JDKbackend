@@ -1,0 +1,42 @@
+
+Icom.cue.dao.Handler#getUserById(Ljava/lang/Integer;)Lcom/cue/models/User;
+__unknown_file ("paramAnnotations*ˇ
+paramAnnotationsL
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javaà à($ñ
+ì
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javaá á(
+
+%2"
+__annotate*
+java.lang.Override*
+
+idjava.lang.Integer
+}
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javaà! à(#
+idjava.lang.Integer"__annotation*
+
+%2*
+1*Ë
+1L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javaâ	 â(ì
+ê
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javaâ	 â(
+%0com.cue.dao.UserDao"__id**
+com.cue.dao.Handler"
+udëé
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javaâ	 â(
+%1com.cue.models.User"Icom.cue.dao.UserDao#getUserById(Ljava/lang/Integer;)Lcom/cue/models/User;*
+
+%0com.cue.dao.UserDao*
+
+idjava.lang.Integer2 getUserById(Ljava/lang/Integer;)"k
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javaâ â(
+
+%1com.cue.models.User:
+idjava.lang.IntegerB
+com.cue.dao.Handler

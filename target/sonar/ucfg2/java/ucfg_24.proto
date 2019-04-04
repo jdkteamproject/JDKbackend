@@ -1,0 +1,21 @@
+
+2com.cue.dao.Handler#getAllEvents()Ljava/util/List;
+__unknown_file ("1*ï
+1J
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javak	 k(í
+è
+J
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javak	 k(
+%0com.cue.dao.EventDao"__id**
+com.cue.dao.Handler"
+ed»≈
+J
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javak	 k(
+%1java.util.List"3com.cue.dao.EventDao#getAllEvents()Ljava/util/List;*
+
+%0com.cue.dao.EventDao2getAllEvents()"d
+J
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.javak k(
+
+%1java.util.ListB
+com.cue.dao.Handler

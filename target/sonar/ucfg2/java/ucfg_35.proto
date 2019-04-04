@@ -1,0 +1,21 @@
+
+9com.cue.dao.Handler#getAllNotifications()Ljava/util/List;
+__unknown_file ("1*À
+1L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.java¢	 ¢(›
+˜
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.java¢	 ¢(!
+%0com.cue.dao.NotificationDao"__id**
+com.cue.dao.Handler"
+ndæã
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.java¢	 ¢(!
+%1java.util.List"Acom.cue.dao.NotificationDao#getAllNotifications()Ljava/util/List;*#
+!
+%0com.cue.dao.NotificationDao2getAllNotifications()"f
+L
+@D:\JDKproject1\JDKbackend\src\main\java\com\cue\dao\Handler.java¢ ¢("
+
+%1java.util.ListB
+com.cue.dao.Handler
