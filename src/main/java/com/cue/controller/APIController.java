@@ -19,7 +19,11 @@ public class APIController {
 	TicketMasterAPI tmAPI;
 	
 	@GetMapping
-    public JSONObject getAPI(@RequestParam(value="page", required=false) Integer page, @RequestParam(value="city", required=false) String city, @RequestParam(value="category", required=false) String category, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(value="id", required=false) String id){
+    public JSONObject getAPI(@RequestParam(value="page", required=false) Integer page,
+    		@RequestParam(value="city", required=false) String city,
+    		@RequestParam(value="category", required=false) String category,
+    		@RequestParam(value="keyword", required=false) String keyword,
+    		@RequestParam(value="id", required=false) String id){
 		
 		if(keyword==null) {
 			keyword = "";
@@ -42,3 +46,5 @@ public class APIController {
 	
 
 }
+
+

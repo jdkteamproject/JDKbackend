@@ -63,6 +63,7 @@ public class UserController {
 		if(user != null) {
 			boolean exists = false;
 			List<Event> allEvents = handler.getAllEvents();
+			
 			if(event.getE_id() != null) {
 				for(Event e : allEvents) {
 					if(e.getE_sid().equals(event.getE_sid())) {
