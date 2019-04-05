@@ -122,6 +122,41 @@ public class AppTest
     	
     }
     
+//    public void testUpdateUser4() {
+//    	if(handler.getUserByEmail("testing1@gmail.com") == null) this.testDeleteAndCreateUser();
+//    	
+//    	User testUser = handler.getUserByEmail("testing1@gmail.com");
+//    	testUser.setFavEvents(new HashSet<Event>());
+//    	
+//    	handler.updateUser(testUser);
+//    	
+//    	
+//    	assertEquals((HashSet<Event>)handler.getUserById(testUser.getId()).getFavEvents(), new HashSet<Event>());
+//    	
+//    }
+//    
+//    public void testAddfavEvent() {
+//    	if(handler.getUserByEmail("testing1@gmail.com") == null) this.testDeleteAndCreateUser();
+//    	List<Event> events = handler.getAllEvents();
+//    	boolean exists = false;
+//    	for(Event e : events) {
+//    		if(e.getE_sid().equals("G5diZ4oLvGfYG")) {
+//    			exists = true;
+//    			event1 = e;
+//    		}
+//    	}
+//    	if(!exists) handler.createEvent(event1);
+//    	
+//    	User testUser = handler.getUserByEmail("testing1@gmail.com");
+//    	
+//    	testUser.addFavEvent(event1);
+//    	
+//    	handler.updateUser(testUser);
+//    	
+//    	assertEquals((HashSet<Event>)handler.getUserById(testUser.getId()).getFavEvents(), testUser.getFavEvents());
+//    	
+//    }
+    
 }
 
 

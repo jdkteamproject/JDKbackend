@@ -37,13 +37,13 @@ public class TicketMasterAPI {
 		String inline = "";
 		
 		try {
-			url = new URL(searchUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.connect();
-			int responsecode = conn.getResponseCode();
-			if(responsecode != 200) throw new RuntimeException("HttpResponseCode: " + responsecode);
-			else {
+			while(retrieved == null) {
+				
+				url = new URL(searchUrl);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.connect();
+				
 				Scanner sc = new Scanner(url.openStream());
 				while(sc.hasNext()) {
 					inline+=sc.nextLine();
@@ -69,7 +69,6 @@ public class TicketMasterAPI {
 						}
 					}
 				}
-				
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -83,7 +82,8 @@ public class TicketMasterAPI {
 		category = category.replace(" ", "%20");
 		keyword = keyword.replace(" ", "%20");
 		id = id.replace(" ", "%20");
-		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=t63Al5tXuGHyxtiO6eDELpEGEnt45tg9&page=" + page + "&city=" + city + "&segmentName=" + category + "&keyword=" + keyword + "&id=" + id;
+		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=t63Al5tXuGHyxtiO6eDELpEGEnt45tg9&page="
+				+ page + "&city=" + city + "&segmentName=" + category + "&keyword=" + keyword + "&id=" + id;
 		System.out.println("URL is: " + url);
 		
 		return this.searchMore(url);

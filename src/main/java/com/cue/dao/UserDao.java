@@ -2,8 +2,6 @@ package com.cue.dao;
 
 import java.util.List;
 
-import org.json.simple.JSONObject;
-
 import com.cue.models.User;
 
 public interface UserDao {
